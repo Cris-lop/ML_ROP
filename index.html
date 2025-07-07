@@ -77,7 +77,40 @@
             padding: 20px 0;
             background: #333;
             color: #fff;
-        }
+        } 
+/* Add this new CSS code at the end of your style section */
+.result-entry {
+    display: grid;
+    grid-template-columns: 1fr; /* This stacks the text and image on mobile */
+    gap: 25px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.result-text h3 {
+    margin-top: 0;
+}
+
+.result-entry img {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* This creates the two-column layout on larger screens */
+@media (min-width: 768px) {
+    .result-entry {
+        grid-template-columns: 1fr 1.2fr; /* Text on left, image on right */
+    }
+    
+    /* This flips the layout for every second entry for a nicer look */
+    .result-entry:nth-child(even) {
+        grid-template-columns: 1.2fr 1fr; /* Image on left, text on right */
+    }
+    .result-entry:nth-child(even) .result-text {
+        order: 2; /* This moves the text to the second column */
+    }
+}
     </style>
 </head>
 <body>
@@ -133,33 +166,43 @@
         </div>
     </section>
 
-    <section id="results">
-        <div class="container">
-            <h2>Key Results</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Superior Model Performance</h3>
-                    <p>The Gradient Boosting Regressor (GBR) model demonstrated a significantly lower mean prediction error of <strong>28.3%</strong>, compared to 48.6% for the B&Y model and 134.0% for Maurer's model.</p>
-                    <img src="model_performance_comparison.png" alt="Comparison of ROP prediction models">
-                </div>
-                <div class="card">
-                    <h3>Optimized ROP</h3>
-                    <p>The ML-driven optimization consistently identified parameter settings that led to a higher and more stable Rate of Penetration compared to the original drilling performance.</p>
-                    <img src="rop_comparison_optimized.png" alt="Optimized ROP vs Original ROP">
-                </div>
-                 <div class="card">
-                    <h3>Significant Cost Reduction</h3>
-                    <p>The analysis showed a clear potential for cost savings. By optimizing drilling parameters, the project demonstrates a direct path to reducing the high costs associated with drilling operations.</p>
-                    <img src="cost_comparison.png" alt="Cost comparison with and without ML">
-                </div>
-                <div class="card">
-                    <h3>Key Parameter Identification</h3>
-                    <p>The feature importance analysis identified critical parameters such as Depth, Standpipe Pressure (SPPA), and Surface Torque (STOR) as the most influential variables for predicting ROP.</p>
-                    <img src="feature_importance.png" alt="Feature importance of drilling parameters">
-                </div>
+   <section id="results">
+    <div class="container">
+        <h2>Key Results</h2>
+
+        <div class="result-entry">
+            <div class="result-text">
+                <h3>Superior Model Performance</h3>
+                <p>The Gradient Boosting Regressor (GBR) model demonstrated a significantly lower mean prediction error of <strong>28.3%</strong>, compared to 48.6% for the B&Y model and 134.0% for Maurer's model.</p>
             </div>
+            <img src="model_performance_comparison.png" alt="Comparison of ROP prediction models">
         </div>
-    </section>
+        
+        <div class="result-entry">
+            <div class="result-text">
+                <h3>Optimized ROP</h3>
+                <p>The ML-driven optimization consistently identified parameter settings that led to a higher and more stable Rate of Penetration compared to the original drilling performance.</p>
+            </div>
+            <img src="rop_comparison_optimized.png" alt="Optimized ROP vs Original ROP">
+        </div>
+
+        <div class="result-entry">
+            <div class="result-text">
+                <h3>Significant Cost Reduction</h3>
+                <p>The analysis showed a clear potential for cost savings. By optimizing drilling parameters, the project demonstrates a direct path to reducing the high costs associated with drilling operations.</p>
+            </div>
+            <img src="cost_comparison.png" alt="Cost comparison with and without ML">
+        </div>
+
+        <div class="result-entry">
+            <div class="result-text">
+                <h3>Key Parameter Identification</h3>
+                <p>The feature importance analysis identified critical parameters such as Depth, Standpipe Pressure (SPPA), and Surface Torque (STOR) as the most influential variables for predicting ROP.</p>
+            </div>
+            <img src="feature_importance.png" alt="Feature importance of drilling parameters">
+        </div>
+    </div>
+</section>
 
     <section id="code">
         <div class="container" style="text-align: center;">
